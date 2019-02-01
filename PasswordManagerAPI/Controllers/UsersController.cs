@@ -108,6 +108,8 @@ namespace PasswordManagerAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            users.SignUpDate = DateTime.Now;
+
             _context.Users.Add(users);
             await _context.SaveChangesAsync();
 

@@ -31,6 +31,18 @@ namespace PasswordManagerAPI
 
             var connection = "Data Source=DESKTOP-CLC7U5P\\SQLEXPRESS;Initial Catalog=PasswordManagerDev;Integrated Security=True";
             services.AddDbContext<PasswordManagerDevContext>(options => options.UseSqlServer(connection));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("VueCorsPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .WithOrigins("http://localhost:8080/");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

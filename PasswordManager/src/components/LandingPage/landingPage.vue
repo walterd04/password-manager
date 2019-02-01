@@ -1,7 +1,9 @@
 ﻿<template>
     <div>
-        <jumbo-tron v-on:sign-up="signUp()"></jumbo-tron> 
-        <custom-modal v-if="showModal" :type="type"></custom-modal>
+        <jumbo-tron v-on:sign-up="signUp()"
+                    v-on:log-in="login()"></jumbo-tron> 
+        <custom-modal v-if="showModal"
+                      :type="type"></custom-modal>
         
     </div>
 </template>
@@ -20,6 +22,10 @@
         methods: {
             signUp() {
                 this.type = 'signup';
+                this.$store.commit('SHOW_MODAL');
+            },
+            login() {
+                this.type = 'login'; 
                 this.$store.commit('SHOW_MODAL');
             }
         },

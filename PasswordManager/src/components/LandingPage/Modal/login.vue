@@ -2,7 +2,7 @@
     <div>
         <div class="modal-header">
             <h5 class="modal-title">Login Here!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" @click="closeModal()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -21,7 +21,7 @@
         name: 'login-modal', 
         methods: {
             closeModal() {
-                this.$store.commit('CLOSE_MODAL');
+                this.$store.commit('HIDE_MODAL');
             }
         }
     }

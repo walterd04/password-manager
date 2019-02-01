@@ -6,7 +6,7 @@
             Don't want to pay just to store your passwords safely and securely?<br>
             You've come to the right place! Find out more below!
         </p>
-        <hr />
+        <hr class="pl-5 pr-5" />
         <div class="pl-5">
             <button type="button" class="btn btn-success btn-lg mr-4" @click="signUp()">Sign Up Now!</button>
             <button type="button" class=" btn btn-primary btn-lg" @click="scrollDown()">Learn More!</button>
