@@ -1,12 +1,11 @@
 ﻿<template>
     <div>
-        <md-menu>
-            <md-button>Home</md-button>
-            <md-button>Dashboard</md-button>
-            <md-button>Account Settings</md-button>
-            <md-button>Sign Up</md-button>
-            <md-button>Login</md-button>
-        </md-menu>
+        <nav class="navbar navbar-light bg-light justify-content-center">
+            <span class="navbar-brand h1"><img src="../../../public/university-default-logo (1).png" width="50" height="50" /></span>
+        </nav>
+        <nav class="navbar navbar-dark bg-dark justify-content-center">
+            <span class="navbar-brand text-light h1">Password Manager</span>
+        </nav>
     </div>
 </template>
 
@@ -16,3 +15,7 @@
         name: 'main-menu'
     }
 </script>
+
+<style scoped>
+    
+</style>
