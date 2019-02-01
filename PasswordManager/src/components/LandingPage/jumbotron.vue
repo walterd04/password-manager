@@ -8,11 +8,11 @@
         </p>
         <hr />
         <div class="pl-5">
-            <button type="button" class="btn btn-success btn-lg mr-4">Sign Up Now!</button>
-            <button type="button" class=" btn btn-primary btn-lg">Learn More!</button>
+            <button type="button" class="btn btn-success btn-lg mr-4" @click="signUp()">Sign Up Now!</button>
+            <button type="button" class=" btn btn-primary btn-lg" @click="scrollDown()">Learn More!</button>
             <p class="pl-3 mt-2">
                 Already a member?
-                <a href="#">Login here!</a>
+                <a href="#" @click.prevent="login()">Login here!</a>
             </p>
         </div>
     </div>
@@ -20,6 +20,17 @@
 
 <script>
     export default {
-        name: 'jumbo-tron'
+        name: 'jumbo-tron', 
+        methods: {
+            signUp() {
+                this.$emit('sign-up');
+            }, 
+            scrollDown() {
+                this.$emit('scroll-down'); 
+            }, 
+            login() {
+                this.$emit('log-in');
+            }
+        }
     }
 </script>

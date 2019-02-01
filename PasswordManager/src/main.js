@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueResource from 'vue-resource'; 
 import Vuex from 'vuex';
+import { store } from './store/store';
 import './assets/site.css';
 import 'jquery';
 import '../node_modules/jquery/dist/jquery.min.js';
@@ -15,5 +16,6 @@ Vue.use(Vuex);
 Vue.config.productionTip = true;
 
 new Vue({
-    render: h => h(App)
+    render: h => h(App), 
+    store: store
 }).$mount('#app');
