@@ -6,7 +6,7 @@
         </div>
         <div v-else>
             <menu-component></menu-component>
-            <h1>User is loggedIn!</h1>
+            <dash-board></dash-board>
         </div>
     </div>
 </template>
@@ -15,6 +15,7 @@
     import Header from './components/Header/header.vue';
     import LandingPage from './components/LandingPage/landingPage.vue';
     import MenuComponent from './components/Header/menu.vue';
+    import DashBoard from './components/Dashboard/dashboard.vue';
 
     export default {
         name: 'app',
@@ -26,7 +27,8 @@
         components: {
             headerComponent: Header, 
             landingPage: LandingPage, 
-            menuComponent: MenuComponent
+            menuComponent: MenuComponent, 
+            dashBoard: DashBoard
         }
     };
 </script>
