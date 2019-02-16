@@ -1,19 +1,32 @@
 <template>
     <div id="app">
-        <header-component></header-component>
-        <landing-page></landing-page>
+        <div v-if="!user.isLoggedIn">
+            <header-component></header-component>
+            <landing-page></landing-page>
+        </div>
+        <div v-else>
+            <menu-component></menu-component>
+            <h1>User is loggedIn!</h1>
+        </div>
     </div>
 </template>
 
 <script>
     import Header from './components/Header/header.vue';
     import LandingPage from './components/LandingPage/landingPage.vue';
+    import MenuComponent from './components/Header/menu.vue';
 
     export default {
         name: 'app',
+        computed: {
+            user() {
+                return this.$store.state.user;
+            }
+        },
         components: {
             headerComponent: Header, 
-            landingPage: LandingPage
+            landingPage: LandingPage, 
+            menuComponent: MenuComponent
         }
     };
 </script>

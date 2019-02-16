@@ -17,8 +17,12 @@ Vue.use(cors);
 
 Vue.config.productionTip = true;
 
-Vue.http.options.root = 'https://localhost:44322/'; 
+Vue.http.options.root = 'https://localhost:44322/api/'; 
 Vue.http.headers.common['X-Requested-With'] = 'XMLHttpRequest'; 
+Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
+Vue.http.headers.common['Access-Control-Allow-Methods'] = 'POST, GET, PUT, OPTIONS, DELETE';
+Vue.http.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+Vue.http.headers.common['Accept'] = '/';
 
 //Vue.http.interceptors.push((request, next) => {
 //    request.headers.set('X-CSRF-TOKEN', 'VERY_SECURE_TOKEN_HERE');

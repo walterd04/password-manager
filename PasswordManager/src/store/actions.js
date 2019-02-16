@@ -2,13 +2,20 @@
 
 export const actions = {
 
-    signUp: (context, payload) => {
+    getUsers: () => {
         return new Promise(resolve => {
-            Vue.http.post('api/Users', payload).then(response => {
+            Vue.http.get('Users').then(response => {
 
                 resolve(response);
-            }, (response) => {
+            });
+        });
+    },
 
+    signUp: (context, payload) => {
+        return new Promise(resolve => {
+            Vue.http.post('Users', payload).then(response => {
+                resolve(response.body);
+            }, (response) => {
                 resolve(response);
             });
         });
@@ -16,9 +23,13 @@ export const actions = {
 
     login: (context, payload) => {
         return new Promise(resolve => {
-            Vue.http.get('api/Users/' + payload.username + '/' + payload.password).then(response => {
-
-                resolve(response);
+            Vue.http.get('Users/' + payload.username + '/' + payload.password).then(response => {
+                if (response.body && response.body.length > 0) {
+                    context.commit('SET_USER', response);
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
             }, (response) => {
 
                 resolve(response);

@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <div class="modal-header">
+        <div class="modal-header bg-dark">
             <h5 class="modal-title">Sign-Up Free!</h5>
             <button type="button" class="close" @click="closeModal()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -11,13 +11,13 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="txt-first">First Name:</label>
-                        <input type="text" class="form-control" id="txt-first" v-model="user.first" />
+                        <input type="text" class="form-control" id="txt-first" v-model="user.firstName" />
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="txt-last">Last Name:</label>
-                        <input type="text" class="form-control" id="txt-last" v-model="user.last" />
+                        <input type="text" class="form-control" id="txt-last" v-model="user.lastName" />
                     </div>
                 </div>
             </div>
@@ -44,8 +44,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txt-phone">Phone Number:</label>
+                        <input type="text" class="form-control" id="txt-phone" v-model="user.phone" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txt-username">Username:</label>
+                        <input type="text" class="form-control" id="txt-username" v-model="user.username" />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer bg-dark">
             <button type="button" class="btn btn-primary" @click.prevent="signUp()">Complete Sign-Up</button>
             <button type="button" class="btn btn-secondary" @click="closeModal()">Cancel</button>
         </div>
@@ -58,10 +72,12 @@
         data() {
             return {
                 user: {
-                    first: '',
-                    last: '',
+                    firstName: '',
+                    lastName: '',
                     email: '',
-                    password: '', 
+                    password: '',   //TODO: encrypt this immediately
+                    phone: '', 
+                    username: '',
                     passwordSecure: ''
                 }
             };
