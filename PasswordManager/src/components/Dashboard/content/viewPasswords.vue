@@ -27,6 +27,17 @@
                 this.$emit('set-tab', 'add-password');
             }
         },
+        mounted() {
+            this.$store.dispatch('getPasswords', this.user.userId);
+        },
+        computed: {
+            user() {
+                return this.$store.state.user; 
+            }, 
+            passwords() {
+                return this.$store.state.passwords;
+            }
+        },
         components: {
             emptyState: EmptyState
         }

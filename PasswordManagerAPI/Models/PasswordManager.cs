@@ -11,6 +11,7 @@ namespace PasswordManagerAPI.Models
         public string Password { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
+        public bool? ChangeReminder { get; set; }
 
         public Users User { get; set; }
     }

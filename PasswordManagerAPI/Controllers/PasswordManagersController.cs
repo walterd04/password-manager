@@ -90,6 +90,9 @@ namespace PasswordManagerAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            passwordManager.CreatedDate = DateTime.Now;
+            passwordManager.LastModifiedDate = DateTime.Now;
+
             _context.PasswordManager.Add(passwordManager);
             await _context.SaveChangesAsync();
 
