@@ -7,7 +7,8 @@
                                     @set-tab="setTab($event)"></dashboard-menu>
                 </div>
                 <div class="col">
-                    <content-view :open-tab="activeItem"></content-view>
+                    <content-view :open-tab="activeItem"
+                                  @set-tab="setTab($event)"></content-view>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                 <li :class="{ active: openTab === 'view-passwords' }">
                     <a href="#" @click.prevent="setTab('view-passwords')">View Passwords</a>
                 </li>
-                <li :class="{ active: openTab === 'new-password' }">
+                <li :class="{ active: openTab === 'add-password' }">
                     <a href="#" @click.prevent="setTab('add-password')">Add a New Password</a>
                 </li>
                 <li :class="{ active: openTab === 'manage-passwords' }">

@@ -1,6 +1,7 @@
 ﻿<template>
     <keep-alive>
-        <component v-bind:is="openTab"></component>
+        <component v-bind:is="openTab"
+                   @set-tab="setTab($event)"></component>
     </keep-alive>
 </template>
 
@@ -23,6 +24,11 @@
                 //
             };
         }, 
+        methods: {
+            setTab(tab) {
+                this.$emit('set-tab', tab);
+            }
+        },
         components: {
             viewPasswords: ViewPasswords, 
             addPassword: AddPassword, 
