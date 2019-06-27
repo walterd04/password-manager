@@ -9,13 +9,10 @@ namespace PasswordManager.Core.Services
     public class UsersService : IUsersService
     {
         private readonly IUserRepository _repository;
-        private readonly IEncryption _encryption;
 
-        public UsersService(IUserRepository repository, 
-                            IEncryption encryption)
+        public UsersService(IUserRepository repository)
         {
             this._repository = repository;
-            this._encryption = encryption;
         }
 
         public Users SignUp(Users entity)
