@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PasswordEncryptor.Implementation;
+using PasswordEncryptor.Interfaces;
+using PasswordManager.Core.Entities;
 using PasswordManager.Core.Interfaces;
 using PasswordManager.Core.Services;
 using PasswordManager.Infrastructure;
-using PasswordManagerAPI.Models;
 
-namespace PasswordManagerAPI
+namespace PasswordManager.API
 {
     public class Startup
     {
@@ -49,7 +49,12 @@ namespace PasswordManagerAPI
             services.AddScoped<IUsersService, UsersService>();
             //services.AddTransient<IPasswordManagerService, PasswordManagerService>();
 
+            services.AddTransient<IUserRepository, UsersRepository>();
+
             services.AddTransient<IRepository<Users>, Repository<Users>>();
+            services.AddTransient<IRepositoryAsync<Users>, RepositoryAsync<Users>>();
+
+            services.AddSingleton<ISimplePasswordEncryption<Users>, SimplePasswordEncryption<Users>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +70,7 @@ namespace PasswordManagerAPI
             {
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }

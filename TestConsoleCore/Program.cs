@@ -8,11 +8,7 @@ namespace TestConsoleCore
     {
         static void Main(string[] args)
         {
-            Encryption encryption = new Encryption();
-
-            var crypt = encryption.Encrypt("Password");
-
-            Console.ReadLine();
+           
         }
     }
 }

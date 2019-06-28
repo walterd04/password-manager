@@ -26,9 +26,9 @@ namespace PasswordManager.Infrastructure
                     query = query.OrderByDescending(specification.OrderByDescending);
 
                 if (specification.GroupBy != null) query = query.GroupBy(specification.GroupBy).SelectMany(x => x);
-
-                return query;
             }
+
+            return query;
         }
         
     }

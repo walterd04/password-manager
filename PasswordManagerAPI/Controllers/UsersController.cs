@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PasswordManager.Core.Interfaces;
+using PasswordManager.Infrastructure;
 using PasswordManagerAPI.Models;
 
 namespace PasswordManagerAPI.Controllers
@@ -15,18 +17,28 @@ namespace PasswordManagerAPI.Controllers
     [EnableCors("CorsPolicy")]
     public class UsersController : ControllerBase
     {
-        private readonly PasswordManagerDevContext _context;
+        //private readonly PasswordManagerDevContext _context;
 
-        public UsersController(PasswordManagerDevContext context)
+        //public UsersController(PasswordManagerDevContext context)
+        //{
+        //    _context = context;
+        //}
+
+        private readonly IUsersService _service;
+        private readonly PasswordManagerDbContext _context;
+
+        public UsersController(IUsersService service, 
+                               PasswordManagerDbContext context)
         {
+            _service = service;
             _context = context;
         }
 
         // GET: api/Users
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
+        public IReadOnlyCollection<PasswordManager.Core.Entities.Users> GetUsers()
         {
-            return _context.Users;
+            return _service.GetAll(); 
         }
 
         // GET: api/Users/5
@@ -51,17 +63,25 @@ namespace PasswordManagerAPI.Controllers
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> GetUser([FromRoute] string username, [FromRoute] string password)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            var user = await _context.Users.Where(x => x.Username == username && x.Password == password).ToListAsync();
+            //var user = await _context.Users.Where(x => x.Username == username && x.Password == password).ToListAsync();
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return Ok(user);
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var user = _service.SignIn(username, password);
+
+            if (user is null) return NotFound();
 
             return Ok(user);
         }
@@ -103,7 +123,7 @@ namespace PasswordManagerAPI.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostUsers([FromBody] PasswordManager.Core.Entities.Users users)
         {
             if (!ModelState.IsValid)
             {
