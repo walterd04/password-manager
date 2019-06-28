@@ -10,7 +10,7 @@ namespace PasswordManager.Core.Specifications
     {
         public UserSignOnSpecificationUser(string username) : base(user => user.Username == username)
         {
-            AddInclude(o => o.Username);
+            
         }
     }
 

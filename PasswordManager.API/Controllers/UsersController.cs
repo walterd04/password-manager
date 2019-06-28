@@ -28,7 +28,7 @@ namespace PasswordManager.API.Controllers
             return _service.GetAll();
         }
 
-        [HttpGet("signIn")]
+        [HttpGet("{username}/{password}")]
         public IActionResult SignIn([FromRoute] string username, [FromRoute] string password)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -38,6 +38,18 @@ namespace PasswordManager.API.Controllers
             if (user is null) return NotFound();
 
             return Ok(user);
+        }
+
+        [HttpPost]
+        public IActionResult SignUp([FromBody] Users user)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            user.SignUpDate = DateTime.UtcNow;
+
+            user = _service.SignUp(user);
+
+            return CreatedAtAction("SignUp", new { id = user.UserId }, user);
         }
     }
 }
