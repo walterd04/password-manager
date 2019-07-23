@@ -3,5 +3,6 @@
         isLoggedIn: false, //TODO: Set up authentication
         details: {}
     },
-    showModal: false
+    showModal: false, 
+    passwords: []
 }

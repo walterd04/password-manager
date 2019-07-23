@@ -1,1 +1,84 @@
-﻿
+﻿#dashboard-main { 
+    margin-top: 20px;
+    border-collapse: collapse; 
+    border-spacing: 0; 
+    display: table; 
+    table-layout: fixed;
+    width: 100%;
+}
+
+#dashboard-main aside {
+    display: table-cell; 
+    float: none; 
+    height: 100%; 
+    padding: 0; 
+    vertical-align: top;
+}
+
+.sm-side {
+    background: none repeat scroll 0 0 #E8F1F2;
+    border-radius: 0 0 4px 4px;
+    width: 25%;
+}
+
+.user-portion {
+    background: none repeat scroll 0 0 #ffc107;
+    color: #ffffff;
+    height: 90px;
+    padding: 20px;
+}
+
+ul.dashboard-nav {
+    display: inline-block; 
+    margin: 0; 
+    padding: 0; 
+    width: 100%;
+}
+
+    ul.dashboard-nav li {
+        display: inline-block; 
+        line-height: 75px;
+        width: 100%;
+    }
+
+    ul.dashboard-nav li a { 
+        color: #6a6a6a;
+        display: inline-block; 
+        line-height: 75px; 
+        padding: 0 20px; 
+        width: 100%;
+    }
+
+        ul.dashboard-nav li a:hover,
+        ul.dashboard-nav li.active a,
+        ul.dashboard-nav li a:focus {
+            background: none repeat scroll 0 0 #0B3C49;
+            color: white;
+            text-decoration: none;
+        }
+
+        ul.dashboard-nav li a i{ 
+            color: #6a6a6a; 
+            font-size: 16px; 
+            padding-right: 10px;
+        }
+
+/****Start Row Margins****/
+
+    .row.row-margin-xs { 
+        margin-bottom: 5px; 
+    }
+
+    .row.row-margin-sm { 
+        margin-bottom: 10px; 
+    }
+
+    .row.row-margin-md { 
+        margin-bottom: 20px;
+    }
+
+    .row.row-margin-lg { 
+        margin-bottom: 40px;
+    }
+
+/****End Row Margins****/

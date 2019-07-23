@@ -2,6 +2,7 @@
 
 export const actions = {
 
+    /**** Users Actions ****/
     getUsers: () => {
         return new Promise(resolve => {
             Vue.http.get('Users').then(response => {
@@ -15,8 +16,8 @@ export const actions = {
         return new Promise(resolve => {
             Vue.http.post('Users', payload).then(response => {
                 resolve(response.body);
-            }, (response) => {
-                resolve(response);
+            }, () => {
+                resolve(false);
             });
         });
     }, 
@@ -35,6 +36,34 @@ export const actions = {
                 resolve(response);
             });
         });
+    },
+    /**** Users Actions ****/
+
+    /**** Password Actions ****/
+
+    getPasswords: (context, payload) => {
+        return new Promise(resolve => {
+            Vue.http.get('PasswordManagers/' + payload).then(response => {
+                if (response.body && response.body.length > 0) {
+                    context.commit('SET_DOCUMENTS', response.body);
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            });
+        });
+    },
+
+    addNewPassword: (context, payload) => {
+        return new Promise(resolve => {
+            Vue.http.post('PasswordManagers', payload).then(response => {
+                resolve(response.body);
+            }, () => {
+                resolve(false);
+            });
+        });
     }
+
+    /**** Password Actions ****/
 
 }
