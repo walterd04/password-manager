@@ -12,9 +12,9 @@
 </template>
 
 <script>
-    import Header from './components/Header/header.vue';
+    import Header from './components/header/header.vue';
     import LandingPage from './components/LandingPage/landingPage.vue';
-    import MenuComponent from './components/Header/menu.vue';
+    import MenuComponent from './components/header/menu.vue';
     import DashBoard from './components/Dashboard/dashboard.vue';
 
     export default {
